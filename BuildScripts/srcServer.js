@@ -4,9 +4,12 @@ var open = require('open');
 
 var port=3000;
 var app=express();
-app.get('/',function(req,res){
+app.use(express.static(path.join(__dirname,'../SOURCE/')));
+
+app.get('/*',function(req,res){
 res.sendFile(path.join(__dirname, '../SOURCE/index.html'));
 });
+
 app.listen(port,function(err)
 {
 if(err){
